@@ -18,7 +18,7 @@ export class NoteListComponent implements OnInit  {
 
    }
 
-  ngOnInit(): void {
+  ngOnInit(){
    this.getNotes();
   }
 //Get Users method

@@ -18,6 +18,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NotesformComponent } from './notesform/notesform.component';
 import { HomeComponent } from './home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     HttpClientModule,
     MatTableModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
     
   ],
   providers: [],
