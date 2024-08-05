@@ -13,6 +13,7 @@ export class NotesformComponent implements OnInit {
   notesForm!: FormGroup;
   ckDep: boolean = false;
   notesdata: any = [];
+  notesdatas: any[] = [];
   id: any;
   data: any;
   constructor(
@@ -21,6 +22,7 @@ export class NotesformComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getNotes();
     this.notesForm = this.fb.group({
       category: ['', Validators.required],
       title: ['', Validators.required],
@@ -42,6 +44,14 @@ export class NotesformComponent implements OnInit {
       date: this.data.date,
     })
   }
+ 
+  getNotes() {
+    this.service.getNotes().subscribe(res => {
+      this.notesdatas = res.data;
+      console.log("Userdata", this.notesdatas);
+    });
+  }
+  //Add Notes Data
   AddNotes() {
     if (this.notesForm.invalid) {
       this.ckDep = true;
@@ -62,6 +72,7 @@ export class NotesformComponent implements OnInit {
     }
   }
 
+  // Update Data Method
   updatenotes() {
     if (this.notesForm.invalid) {
       this.ckDep = true;
@@ -71,6 +82,7 @@ export class NotesformComponent implements OnInit {
         this.notesForm.value.id = this.data._id;
         const post = {
           "_id": this.notesForm.value.id,
+          "category": this.notesForm.value.category,
           "title": this.notesForm.value.title,
           "content": this.notesForm.value.content,
           "date": this.notesForm.value.date,
